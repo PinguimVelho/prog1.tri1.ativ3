@@ -23,7 +23,7 @@ const srv = Bun.serve({
         "/login": {
             POST: async (req) => {
                 const body = await req.body?.json()
-                const query = db.query(`SELECT * FROM user WHERE username=:username LIMIT 1`)
+                const query = db.query(`SELECT * FROM users WHERE username=:username LIMIT 1`)
                 const data: any = query.get({ ":username": body.username })
                 if (!data)
                     return Response.json({ msg: "usuário não encontrado" }, { status: 404 })
